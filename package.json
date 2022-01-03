@@ -10,6 +10,9 @@
     "test": "mocha test/tests.js",
     "transpile": "babel src --quiet --out-dir dist",
     "readme": "node bundler/bundle.js",
+    "d": "npm run bundle.development",
+    "p": "npm run bundle.production",
+    "b": "npm run build",
     "bundle.development": "webpack-cli dist/index.js --output build/collect.js --mode development --output-library collect",
     "bundle.production": "webpack-cli dist/index.js --output build/collect.min.js --mode production --output-library collect",
     "build": "npm run transpile && npm run bundle.development && npm run bundle.production && npm run readme",
@@ -74,5 +77,8 @@
     "nyc": "^11.0.2",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security"
   }
 }

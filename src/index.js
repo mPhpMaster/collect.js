@@ -1,5 +1,142 @@
 'use strict';
 
+const higherOrderObjectProxy = require('./helpers/higherOrderObjectProxy');
+
+const methods = [
+  'all',
+  'average',
+  'avg',
+  'chunk',
+  'collapse',
+  'combine',
+  'concat',
+  'contains',
+  'count',
+  'countBy',
+  'crossJoin',
+  'dd',
+  'diff',
+  'diffAssoc',
+  'diffKeys',
+  'doesntContain',
+  'dump',
+  'duplicates',
+  'each',
+  'eachSpread',
+  'every',
+  'except',
+  'filter',
+  'first',
+  'firstOrFail',
+  'firstWhere',
+  'flatMap',
+  'flatten',
+  'flip',
+  'forPage',
+  'forget',
+  'get',
+  'groupBy',
+  'has',
+  'implode',
+  'intersect',
+  'intersectByKeys',
+  'isEmpty',
+  'isNotEmpty',
+  'join',
+  'keyBy',
+  'keys',
+  'last',
+  'macro',
+  'make',
+  'map',
+  'mapSpread',
+  'mapToDictionary',
+  'mapInto',
+  'mapToGroups',
+  'mapWithKeys',
+  'max',
+  'median',
+  'merge',
+  'mergeRecursive',
+  'min',
+  'mode',
+  'nth',
+  'only',
+  'pad',
+  'partition',
+  'pipe',
+  'pluck',
+  'pop',
+  'prepend',
+  'pull',
+  'push',
+  'put',
+  'random',
+  'reduce',
+  'reject',
+  'replace',
+  'replaceRecursive',
+  'reverse',
+  'search',
+  'shift',
+  'shuffle',
+  'skip',
+  'skipUntil',
+  'skipWhile',
+  'slice',
+  'sole',
+  'some',
+  'sort',
+  'sortDesc',
+  'sortBy',
+  'sortByDesc',
+  'sortKeys',
+  'sortKeysDesc',
+  'splice',
+  'split',
+  'sum',
+  'take',
+  'takeUntil',
+  'takeWhile',
+  'tap',
+  'times',
+  'toArray',
+  'toJson',
+  'transform',
+  'unless',
+  'unlessEmpty',
+  'unlessNotEmpty',
+  'union',
+  'unique',
+  'unwrap',
+  'values',
+  'when',
+  'whenEmpty',
+  'whenNotEmpty',
+  'where',
+  'whereBetween',
+  'whereIn',
+  'whereInstanceOf',
+  'whereNotBetween',
+  'whereNotIn',
+  'whereNull',
+  'whereNotNull',
+  'wrap',
+  'zip',
+];
+//
+// function higherOrderObject(collection) {
+//   if (collection !== undefined && !Array.isArray(collection) && typeof collection !== 'object') {
+//     this.items = [collection];
+//   } else if (collection instanceof this.constructor) {
+//     this.items = collection.all();
+//   } else {
+//     this.items = collection || [];
+//   }
+//
+//   return higherOrderObjectProxy(this, true);
+// }
+
 function Collection(collection) {
   if (collection !== undefined && !Array.isArray(collection) && typeof collection !== 'object') {
     this.items = [collection];
@@ -8,6 +145,31 @@ function Collection(collection) {
   } else {
     this.items = collection || [];
   }
+
+  return new Proxy(this, {
+    /**
+     *
+     * @param $object
+     * @param {string} method
+     * @param receiver
+     * @returns {any}
+     */
+    get($object, method, receiver) {
+      if (typeof method === 'string' && method.substr(-3) === 'Let') {
+        const methodName = method.substr(0, method.length - 3);
+
+        return new Proxy($object, {
+          get($_object, prop, _receiver) {
+            return $_object[methodName](value => value && value[prop] || undefined);
+          },
+        });
+      }
+      // console.warn(...arguments);
+
+      return Reflect.get(...arguments);
+      // return higherOrderObject($object, method, _method, receiver);
+    },
+  });
 }
 
 /**
@@ -52,6 +214,7 @@ Collection.prototype.every = require('./methods/every');
 Collection.prototype.except = require('./methods/except');
 Collection.prototype.filter = require('./methods/filter');
 Collection.prototype.first = require('./methods/first');
+Collection.prototype.firstOrFail = require('./methods/firstOrFail');
 Collection.prototype.firstWhere = require('./methods/firstWhere');
 Collection.prototype.flatMap = require('./methods/flatMap');
 Collection.prototype.flatten = require('./methods/flatten');
@@ -108,6 +271,7 @@ Collection.prototype.skip = require('./methods/skip');
 Collection.prototype.skipUntil = require('./methods/skipUntil');
 Collection.prototype.skipWhile = require('./methods/skipWhile');
 Collection.prototype.slice = require('./methods/slice');
+Collection.prototype.sole = require('./methods/sole');
 Collection.prototype.some = require('./methods/some');
 Collection.prototype.sort = require('./methods/sort');
 Collection.prototype.sortDesc = require('./methods/sortDesc');
