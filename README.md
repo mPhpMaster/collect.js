@@ -193,11 +193,11 @@ collect([1, 2, 3]).all();
 
 collect({
 
-  firstname: 'Sadio',
+            firstname: 'Sadio',
 
-  lastname: 'Mané',
+            lastname: 'Mané',
 
-}).all();
+        }).all();
 
 // {
 
@@ -232,23 +232,23 @@ If the collection contains nested arrays or objects, you should pass a key to us
 
 const collection = collect([
 
-  {
+                               {
 
-    name: 'My story',
+                                   name: 'My story',
 
-    pages: 176,
+                                   pages: 176,
 
-  },
+                               },
 
-  {
+                               {
 
-    name: 'Fantastic Beasts and Where to Find Them',
+                                   name: 'Fantastic Beasts and Where to Find Them',
 
-    pages: 1096,
+                                   pages: 1096,
 
-  },
+                               },
 
-]);
+                           ]);
 
 collection.avg('pages');
 
@@ -262,23 +262,23 @@ You may also define a callback function
 
 const collection = collect([
 
-  {
+                               {
 
-    name: 'My story',
+                                   name: 'My story',
 
-    pages: 176,
+                                   pages: 176,
 
-  },
+                               },
 
-  {
+                               {
 
-    name: 'Fantastic Beasts and Where to Find Them',
+                                   name: 'Fantastic Beasts and Where to Find Them',
 
-    pages: 1096,
+                                   pages: 1096,
 
-  },
+                               },
 
-]);
+                           ]);
 
 collection.avg(book => book.pages);
 
@@ -366,11 +366,11 @@ let concatenated = collection.concat(['a', 'b', 'c']);
 
 concatenated = concatenated.concat({
 
-  name: 'Mohamed Salah',
+                                       name: 'Mohamed Salah',
 
-  number: 11,
+                                       number: 11,
 
-});
+                                   });
 
 concatenated.all();
 
@@ -386,11 +386,11 @@ The contains method determines whether the collection contains a given item:
 
 const collection = collect({
 
-  name: 'Mohamed Salah',
+                               name: 'Mohamed Salah',
 
-  number: 11,
+                               number: 11,
 
-});
+                           });
 
 collection.contains('name');
 
@@ -424,11 +424,11 @@ You may also pass a key / value pair to the contains method, which will determin
 
 const collection = collect({
 
-  name: 'Mohamed Salah',
+                               name: 'Mohamed Salah',
 
-  number: 11,
+                               number: 11,
 
-});
+                           });
 
 collection.contains('name', 'Steve Jobs');
 
@@ -492,13 +492,13 @@ However, you pass a callback to the countBy method to count all items by a custo
 
 const collection = collect([
 
-  'mohamed.salah@gmail.com',
+                               'mohamed.salah@gmail.com',
 
-  'sadio.mane@yahoo.com',
+                               'sadio.mane@yahoo.com',
 
-  'roberto.firmino@gmail.com',
+                               'roberto.firmino@gmail.com',
 
-]);
+                           ]);
 
 const counted = collection.countBy(email => email.split('@')[1]);
 
@@ -580,25 +580,25 @@ This method will return the key / value pairs in the original collection that ar
 
 const collection = collect({
 
-  color: 'orange',
+                               color: 'orange',
 
-  type: 'fruit',
+                               type: 'fruit',
 
-  remain: 6,
+                               remain: 6,
 
-});
+                           });
 
 const diff = collection.diffAssoc({
 
-  color: 'yellow',
+                                      color: 'yellow',
 
-  type: 'fruit',
+                                      type: 'fruit',
 
-  remain: 3,
+                                      remain: 3,
 
-  used: 6,
+                                      used: 6,
 
-});
+                                  });
 
 diff.all();
 
@@ -614,23 +614,23 @@ The diffKeys method compares the collection against another collection or a plai
 
 const collection = collect({
 
-  a: 'a',
+                               a: 'a',
 
-  b: 'b',
+                               b: 'b',
 
-  c: 'c',
+                               c: 'c',
 
-  d: 'd',
+                               d: 'd',
 
-});
+                           });
 
 const diff = collection.diffKeys({
 
-  b: 'b',
+                                     b: 'b',
 
-  d: 'd',
+                                     d: 'd',
 
-});
+                                 });
 
 diff.all();
 
@@ -668,11 +668,11 @@ You may also use `doesntContain` on object based collections:
 
 const collection = collect({
 
-  name: 'Mohamed Salah',
+                               name: 'Mohamed Salah',
 
-  number: 11,
+                               number: 11,
 
-});
+                           });
 
 collection.doesntContain('Mohamed Salah');
 
@@ -690,11 +690,11 @@ You may also pass a key / value pair to the contains method, which will determin
 
 const collection = collect({
 
-  name: 'Mohamed Salah',
+                               name: 'Mohamed Salah',
 
-  number: 11,
+                               number: 11,
 
-});
+                           });
 
 collection.doesntContain('name', 'Sadio Mané');
 
@@ -710,11 +710,11 @@ The dump method outputs the results at that moment and then continues processing
 
 collect([1, 2, 3, 4])
 
-  .dump()
+    .dump()
 
-  .map(item => item * 2)
+    .map(item => item * 2)
 
-  .dump();
+    .dump();
 
 // Collection { items: [ 1, 2, 3, 4 ] }
 
@@ -750,7 +750,7 @@ const collection = collect([1, 3, 3, 7]);
 
 collection.each((item) => {
 
-  sum += item;
+    sum += item;
 
 });
 
@@ -770,13 +770,13 @@ const collection = collect([1, 3, 3, 7]);
 
 collection.each((item) => {
 
-  sum += item;
+    sum += item;
 
-  if (sum > 5) {
+    if (sum > 5) {
 
-    return false;
+        return false;
 
-  }
+    }
 
 });
 
@@ -796,7 +796,7 @@ const collection = collect([['John Doe', 35], ['Jane Doe', 33]]);
 
 collection.eachSpread((name, age) => {
 
-  //
+    //
 
 });
 
@@ -830,13 +830,13 @@ The except method returns all items in the collection except for those with the 
 
 const collection = collect({
 
-  product_id: 1,
+                               product_id: 1,
 
-  price: 100,
+                               price: 100,
 
-  discount: false,
+                               discount: false,
 
-});
+                           });
 
 const filtered = collection.except(['price', 'discount']);
 
@@ -850,9 +850,9 @@ filtered.all();
 
 collect([1, 2, 3, 4])
 
-  .except([2, 12])
+    .except([2, 12])
 
-  .all();
+    .all();
 
 // [1, 3, 4]
 
@@ -882,37 +882,37 @@ If no callback is supplied, all entries of the collection that are equivalent to
 
 const collection = collect([
 
-  0,
+                               0,
 
-  1,
+                               1,
 
-  2,
+                               2,
 
-  null,
+                               null,
 
-  3,
+                               3,
 
-  4,
+                               4,
 
-  undefined,
+                               undefined,
 
-  5,
+                               5,
 
-  6,
+                               6,
 
-  7,
+                               7,
 
-  [],
+                               [],
 
-  8,
+                               8,
 
-  9,
+                               9,
 
-  {},
+                               {},
 
-  10,
+                               10,
 
-]);
+                           ]);
 
 const filtered = collection.filter();
 
@@ -946,9 +946,10 @@ collect([1, 2, 3, 4]).first();
 
 ```
 
-####### `firstOrFail()`
+#### `firstOrFail()`
 
 The firstOrFail method returns the first element in the collection, or throws an error if there are no elements:
+
 
 ```js
 
@@ -3048,7 +3049,7 @@ slice.all();
 
 ```
 
-####### `sole()`
+#### `sole()`
 
 The sole method returns the first element in the collection that passes a given truth test, but only if the truth test matches exactly one element:
 
@@ -3124,13 +3125,13 @@ The sortBy method sorts the collection by the given key. The sorted collection k
 
 const collection = collect([
 
-  { name: 'Desk', price: 200 },
+                               { name: 'Desk', price: 200 },
 
-  { name: 'Chair', price: 100 },
+                               { name: 'Chair', price: 100 },
 
-  { name: 'Bookcase', price: 150 },
+                               { name: 'Bookcase', price: 150 },
 
-]);
+                           ]);
 
 const sorted = collection.sortBy('price');
 
@@ -3154,49 +3155,49 @@ You can use dot notation to sort by nested values
 
 const collection = collect([
 
-  {
+                               {
 
-    name: 'Desk',
+                                   name: 'Desk',
 
-    price: 200,
+                                   price: 200,
 
-    manufacturer: {
+                                   manufacturer: {
 
-      name: 'IKEA',
+                                       name: 'IKEA',
 
-    },
+                                   },
 
-  },
+                               },
 
-  {
+                               {
 
-    name: 'Chair',
+                                   name: 'Chair',
 
-    price: 100,
+                                   price: 100,
 
-    manufacturer: {
+                                   manufacturer: {
 
-      name: 'Herman Miller',
+                                       name: 'Herman Miller',
 
-    },
+                                   },
 
-  },
+                               },
 
-  {
+                               {
 
-    name: 'Bookcase',
+                                   name: 'Bookcase',
 
-    price: 150,
+                                   price: 150,
 
-    manufacturer: {
+                                   manufacturer: {
 
-      name: 'IKEA',
+                                       name: 'IKEA',
 
-    },
+                                   },
 
-  },
+                               },
 
-]);
+                           ]);
 
 const sorted = collection.sortBy('manufacturer.name');
 
@@ -3256,13 +3257,13 @@ You can also pass your own callback to determine how to sort the collection valu
 
 const collection = collect([
 
-  { name: 'Desk', colors: ['Black', 'Mahogany'] },
+                               { name: 'Desk', colors: ['Black', 'Mahogany'] },
 
-  { name: 'Chair', colors: ['Black'] },
+                               { name: 'Chair', colors: ['Black'] },
 
-  { name: 'Bookcase', colors: ['Red', 'Beige', 'Brown'] },
+                               { name: 'Bookcase', colors: ['Red', 'Beige', 'Brown'] },
 
-]);
+                           ]);
 
 const sorted = collection.sortBy((product, key) => product.colors.length);
 
@@ -3310,13 +3311,13 @@ The sortKeys method sorts the collection by the keys of the underlying associati
 
 const collection = collect({
 
-  id: 10,
+                               id: 10,
 
-  first: 'Sadio',
+                               first: 'Sadio',
 
-  last: 'Mané',
+                               last: 'Mané',
 
-});
+                           });
 
 const sorted = collection.sortKeys();
 
@@ -3426,11 +3427,11 @@ If the collection contains nested arrays or objects, you should pass a key to us
 
 const collection = collect([
 
-  { name: 'My story', pages: 176 },
+                               { name: 'My story', pages: 176 },
 
-  { name: 'Fantastic Beasts and Where to Find Them', pages: 1096 },
+                               { name: 'Fantastic Beasts and Where to Find Them', pages: 1096 },
 
-]);
+                           ]);
 
 collection.sum('pages');
 
@@ -3444,13 +3445,13 @@ In addition, you may pass your own callback to determine which values of the col
 
 const collection = collect([
 
-  { name: 'Desk', colors: ['Black', 'Mahogany'] },
+                               { name: 'Desk', colors: ['Black', 'Mahogany'] },
 
-  { name: 'Chair', colors: ['Black'] },
+                               { name: 'Chair', colors: ['Black'] },
 
-  { name: 'Bookcase', colors: ['Red', 'Beige', 'Brown'] },
+                               { name: 'Bookcase', colors: ['Red', 'Beige', 'Brown'] },
 
-]);
+                           ]);
 
 const total = collection.sum(product => product.colors.length);
 
@@ -3536,17 +3537,17 @@ The tap method passes the collection to the given callback, allowing you to "tap
 
 collect([2, 4, 3, 1, 5])
 
-  .sort()
+    .sort()
 
-  .tap((collection) => {
+    .tap((collection) => {
 
-    console.log(collection.all());
+        console.log(collection.all());
 
-    // [1, 2, 3, 4, 5]
+        // [1, 2, 3, 4, 5]
 
-  })
+    })
 
-  .shift();
+    .shift();
 
 // 1
 
@@ -3586,11 +3587,11 @@ collection.toArray();
 
 const collection = collect({
 
-  name: 'Elon Musk',
+                               name: 'Elon Musk',
 
-  companies: ['Tesla', 'Space X', 'SolarCity'],
+                               companies: ['Tesla', 'Space X', 'SolarCity'],
 
-});
+                           });
 
 collection.toArray();
 
@@ -3606,13 +3607,13 @@ The toJson method converts the collection into JSON string:
 
 const collection = collect({
 
-  id: 384,
+                               id: 384,
 
-  name: 'Rayquaza',
+                               name: 'Rayquaza',
 
-  gender: 'NA',
+                               gender: 'NA',
 
-});
+                           });
 
 const json = collection.toJson();
 
@@ -3646,21 +3647,21 @@ The union method adds the given array to the collection. If the given array cont
 
 const collection = collect({
 
-  a: 'A',
+                               a: 'A',
 
-  b: 'B',
+                               b: 'B',
 
-});
+                           });
 
 const union = collection.union({
 
-  a: 'AAA',
+                                   a: 'AAA',
 
-  c: 'CCC',
+                                   c: 'CCC',
 
-  b: 'BBB',
+                                   b: 'BBB',
 
-});
+                               });
 
 union.all();
 
@@ -3698,17 +3699,17 @@ When dealing with an array of objects, you may specify the key used to determine
 
 const collection = collect([
 
-  { name: 'iPhone 6', brand: 'Apple', type: 'phone' },
+                               { name: 'iPhone 6', brand: 'Apple', type: 'phone' },
 
-  { name: 'iPhone 5', brand: 'Apple', type: 'phone' },
+                               { name: 'iPhone 5', brand: 'Apple', type: 'phone' },
 
-  { name: 'Apple Watch', brand: 'Apple', type: 'watch' },
+                               { name: 'Apple Watch', brand: 'Apple', type: 'watch' },
 
-  { name: 'Galaxy S6', brand: 'Samsung', type: 'phone' },
+                               { name: 'Galaxy S6', brand: 'Samsung', type: 'phone' },
 
-  { name: 'Galaxy Gear', brand: 'Samsung', type: 'watch' },
+                               { name: 'Galaxy Gear', brand: 'Samsung', type: 'watch' },
 
-]);
+                           ]);
 
 const unique = collection.unique('brand');
 
@@ -3730,17 +3731,17 @@ You may also pass your own callback to determine item uniqueness:
 
 const collection = collect([
 
-  { name: 'iPhone 6', brand: 'Apple', type: 'phone' },
+                               { name: 'iPhone 6', brand: 'Apple', type: 'phone' },
 
-  { name: 'iPhone 5', brand: 'Apple', type: 'phone' },
+                               { name: 'iPhone 5', brand: 'Apple', type: 'phone' },
 
-  { name: 'Apple Watch', brand: 'Apple', type: 'watch' },
+                               { name: 'Apple Watch', brand: 'Apple', type: 'watch' },
 
-  { name: 'Galaxy S6', brand: 'Samsung', type: 'phone' },
+                               { name: 'Galaxy S6', brand: 'Samsung', type: 'phone' },
 
-  { name: 'Galaxy Gear', brand: 'Samsung', type: 'watch' },
+                               { name: 'Galaxy Gear', brand: 'Samsung', type: 'watch' },
 
-]);
+                           ]);
 
 const unique = collection.unique(item => item.brand + item.type);
 
@@ -3806,15 +3807,15 @@ The values method returns a new collection with the keys reset to consecutive in
 
 const collection = collect({
 
-  a: 'xoxo',
+                               a: 'xoxo',
 
-  b: 'abab',
+                               b: 'abab',
 
-  c: '1337',
+                               c: '1337',
 
-  1337: 12,
+                               1337: 12,
 
-});
+                           });
 
 const values = collection.values();
 
@@ -3862,9 +3863,9 @@ const collection = collect(['Sadio Mané']);
 
 collection.whenEmpty(
 
-  c => c.push('Mohamed Salah'),
+    c => c.push('Mohamed Salah'),
 
-  c => c.push('Xherdan Shaqiri'),
+    c => c.push('Xherdan Shaqiri'),
 
 );
 
@@ -3908,9 +3909,9 @@ const collection = collect(['Sadio Mané']);
 
 collection.whenNotEmpty(
 
-  c => c.push('Mohamed Salah'),
+    c => c.push('Mohamed Salah'),
 
-  c => c.push('Xherdan Shaqiri'),
+    c => c.push('Xherdan Shaqiri'),
 
 );
 
@@ -3934,15 +3935,15 @@ The where method filters the collection by a given key / value pair:
 
 const collection = collect([
 
-  { product: 'Desk', price: 200, discounted: true },
+                               { product: 'Desk', price: 200, discounted: true },
 
-  { product: 'Chair', price: 100, discounted: true },
+                               { product: 'Chair', price: 100, discounted: true },
 
-  { product: 'Bookcase', price: 150, discounted: true },
+                               { product: 'Bookcase', price: 150, discounted: true },
 
-  { product: 'Door', price: 100 },
+                               { product: 'Door', price: 100 },
 
-]);
+                           ]);
 
 const filtered = collection.where('price', 100);
 
@@ -4078,17 +4079,17 @@ The whereBetween method filters the collection within a given range:
 
 const collection = collect([
 
-  { product: 'Desk', price: 200 },
+                               { product: 'Desk', price: 200 },
 
-  { product: 'Chair', price: 80 },
+                               { product: 'Chair', price: 80 },
 
-  { product: 'Bookcase', price: 150 },
+                               { product: 'Bookcase', price: 150 },
 
-  { product: 'Pencil', price: 30 },
+                               { product: 'Pencil', price: 30 },
 
-  { product: 'Door', price: 100 },
+                               { product: 'Door', price: 100 },
 
-]);
+                           ]);
 
 const filtered = collection.whereBetween('price', [100, 200]);
 
@@ -4114,15 +4115,15 @@ The whereIn method filters the collection by a given key / value contained withi
 
 const collection = collect([
 
-  { product: 'Desk', price: 200 },
+                               { product: 'Desk', price: 200 },
 
-  { product: 'Chair', price: 100 },
+                               { product: 'Chair', price: 100 },
 
-  { product: 'Bookcase', price: 150 },
+                               { product: 'Bookcase', price: 150 },
 
-  { product: 'Door', price: 100 },
+                               { product: 'Door', price: 100 },
 
-]);
+                           ]);
 
 const filtered = collection.whereIn('price', [100, 150]);
 
@@ -4150,13 +4151,13 @@ The whereInstanceOf method filters the collection by a given class type:
 
 const collection = collect([
 
-  new Player('Firmino'),
+                               new Player('Firmino'),
 
-  new Player('Salah'),
+                               new Player('Salah'),
 
-  new Manager('Klopp'),
+                               new Manager('Klopp'),
 
-]);
+                           ]);
 
 const filtered = collection.whereInstanceOf(Player);
 
@@ -4180,17 +4181,17 @@ The whereNotBetween method filters the collection within a given range:
 
 const collection = collect([
 
-  { product: 'Desk', price: 200 },
+                               { product: 'Desk', price: 200 },
 
-  { product: 'Chair', price: 80 },
+                               { product: 'Chair', price: 80 },
 
-  { product: 'Bookcase', price: 150 },
+                               { product: 'Bookcase', price: 150 },
 
-  { product: 'Pencil', price: 30 },
+                               { product: 'Pencil', price: 30 },
 
-  { product: 'Door', price: 100 },
+                               { product: 'Door', price: 100 },
 
-]);
+                           ]);
 
 const filtered = collection.whereNotBetween('price', [100, 200]);
 
@@ -4214,15 +4215,15 @@ The whereNotIn method filters the collection by a given key / value not containe
 
 const collection = collect([
 
-  { product: 'Desk', price: 200 },
+                               { product: 'Desk', price: 200 },
 
-  { product: 'Chair', price: 100 },
+                               { product: 'Chair', price: 100 },
 
-  { product: 'Bookcase', price: 150 },
+                               { product: 'Bookcase', price: 150 },
 
-  { product: 'Door', price: 100 },
+                               { product: 'Door', price: 100 },
 
-]);
+                           ]);
 
 const filtered = collection.whereNotIn('price', [150, 200]);
 
@@ -4248,15 +4249,15 @@ The `whereNotNull` method filters items where the given key is not null.
 
 const collection = collect([{
 
-  name: 'Mohamed Salah',
+    name: 'Mohamed Salah',
 
 }, {
 
-  name: null,
+    name: null,
 
 }, {
 
-  name: 'Sadio Mané',
+    name: 'Sadio Mané',
 
 }]);
 
@@ -4282,15 +4283,15 @@ The `whereNull` method filters items where the given key is null.
 
 const collection = collect([{
 
-  name: 'Mohamed Salah',
+    name: 'Mohamed Salah',
 
 }, {
 
-  name: null,
+    name: null,
 
 }, {
 
-  name: 'Sadio Mané',
+    name: 'Sadio Mané',
 
 }]);
 
