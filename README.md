@@ -981,6 +981,7 @@ collect([1, 2, 3, 4]).firstOrFail();
 collect().firstOrFail();
 
 // Error ("Item not found.") is thrown.
+```
 
 #### `firstWhere()`
 
@@ -3076,6 +3077,8 @@ If there are multiple elements in the collection that should be returned by the 
 collect([1, 2, 3, 4]).sole();
 
 // Error ("Multiple items found.") is thrown.
+
+```
 
 #### `some()`
 
